@@ -31,7 +31,7 @@ contract CurrencyExchangeOffice {
         uint amount = tokens / currency;
         require(address(this).balance >= amount, "Not enough Ether in the contract. Try again later.");
         
-        (bool isSuccess, ) = msg.sender.call{value: amount * 1 ether}(string.concat("Exchanged tokens to Ether."));
+        (bool isSuccess, ) = msg.sender.call{value: amount * 1 ether}("Exchanged tokens to Ether.");
         require(isSuccess, "Failed to transfer Ether");
 
         balances[msg.sender] -= tokens;
